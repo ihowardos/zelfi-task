@@ -11,6 +11,7 @@
   .photo
     = image_tag event.photo
 
-  .actions
-    = link_to "Edit", edit_event_path(event), class: "button tiny"
-    = link_to "Destroy", event_path(event), method: :delete, class: "alert button tiny"
+  - if policy(event).manage?
+    .actions
+      = link_to "Edit", edit_event_path(event), class: "button tiny"
+      = link_to "Destroy", event_path(event), method: :delete, class: "alert button tiny"

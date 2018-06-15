@@ -13,6 +13,10 @@ class EventsController < ApplicationController
   def show
   end
 
+  def edit
+    authorize event, :manage?
+  end
+
   def create
     event.user = current_user
 
@@ -28,6 +32,8 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    authorize event, :manage?
+    
     event.destroy
 
     respond_with event, location: events_path
