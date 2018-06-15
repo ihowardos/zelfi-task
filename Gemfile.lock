@@ -82,6 +82,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (1.2.2)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     choice (0.2.0)
     cliver (0.3.2)
     codeclimate-test-reporter (0.6.0)
@@ -446,6 +450,7 @@ DEPENDENCIES
   bundler-audit
   byebug
   capybara
+  carrierwave
   codeclimate-test-reporter
   coffee-rails
   coffeelint

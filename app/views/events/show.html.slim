@@ -1,0 +1,17 @@
+.row
+  span Title
+  .title
+    = event.title
+
+  span Description
+  .description
+    = event.description
+
+  span Photo
+  .photo
+    = image_tag event.photo
+
+  - if policy(event).manage?
+    .actions
+      = link_to "Edit", edit_event_path(event), class: "button tiny"
+      = link_to "Destroy", event_path(event), method: :delete, class: "alert button tiny"
