@@ -12,8 +12,3 @@ development:
 test:
   database: <%= ENV.fetch("DATABASE_NAME", File.basename(Rails.root)) %>_test
   <<: *defaults
-
-production: &deploy
-  <<: *defaults
-
-staging: *deploy
