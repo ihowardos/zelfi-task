@@ -1,4 +1,21 @@
 .row
   .columns
-    h2
-      = title("Home")
+    - events.each do |event|
+      .title
+        = link_to event.title, event_path(event)
+      .description
+        = event.description
+      .action
+        - if event_registrations.include?(event.id)
+          = link_to "Subscribed", "#",
+            class: "button small", disabled: true, style: "pointer-events: none;"
+        - else
+          = simple_form_for :event_registration, url: event_registrations_path do |f|
+            = f.input :event_id, as: :hidden,
+                      input_html: { \
+                        value: event.id,
+                        read_only: true \
+                      }
+            = f.submit "Subscribe", class: "button small"
+      hr
+    = paginate events
