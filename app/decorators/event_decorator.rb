@@ -1,3 +1,3 @@
 class EventDecorator < ApplicationDecorator
-  delegate :title, :description, :photo
+  delegate :id, :title, :description, :photo
 end

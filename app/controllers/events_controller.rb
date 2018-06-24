@@ -33,7 +33,7 @@ class EventsController < ApplicationController
 
   def destroy
     authorize event, :manage?
-    
+
     event.destroy
 
     respond_with event, location: events_path
@@ -50,6 +50,6 @@ class EventsController < ApplicationController
   end
 
   def fetch_events
-    Event.where(user: current_user)
+    Event.where(user: current_user).page(params[:page]).per(3)
   end
 end
