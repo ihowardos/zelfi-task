@@ -7,8 +7,8 @@ gem "rails", "5.1.2"
 
 # assets
 gem "autoprefixer-rails"
-gem "coffee-rails"
 gem "carrierwave"
+gem "coffee-rails"
 gem "foundation-icons-sass-rails"
 gem "foundation-rails"
 gem "mini_racer"
