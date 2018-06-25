@@ -18,7 +18,6 @@ class EventsController < ApplicationController
   end
 
   def create
-    event_params[:tag_list]
     event.user = current_user
 
     event.save
