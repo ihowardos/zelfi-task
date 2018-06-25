@@ -8,10 +8,14 @@ class PagesController < ApplicationController
   private
 
   def fetch_events
-    Event.all.order(:created_at).page(params[:page]).per(3)
+    events = Event.all.includes(:tags)
+                  .order(:created_at).page(params[:page]).per(3)
+    events = events.where(tags: { name: params[:tag] }) if params[:tag]
+
+    events
   end
 
   def fetch_event_registrations
-    current_user.user_registrations.ids
+    current_user.user_registrations.ids if current_user
   end
 end

@@ -2,5 +2,6 @@
   = f.input :title
   = f.input :description, as: :text
   = f.input :photo
+  = f.input :tag_list, input_html: { placeholder: "Enter tags separated by commas" }
 
-  = f.submit "Create Event", class: "button"
+  = f.submit "Save Event", class: "button"

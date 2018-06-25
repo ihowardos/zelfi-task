@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
 
   expose_decorated :event
   expose_decorated :events, -> { fetch_events }
@@ -18,6 +18,7 @@ class EventsController < ApplicationController
   end
 
   def create
+    event_params[:tag_list]
     event.user = current_user
 
     event.save
@@ -45,11 +46,12 @@ class EventsController < ApplicationController
     params.require(:event).permit(
       :title,
       :description,
-      :photo
+      :photo,
+      :tag_list
     )
   end
 
   def fetch_events
-    Event.where(user: current_user).page(params[:page]).per(3)
+    Event.includes(:tags).where(user: current_user).page(params[:page]).per(3)
   end
 end

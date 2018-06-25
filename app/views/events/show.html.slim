@@ -1,15 +1,19 @@
 .row
-  span Title
+  h4 Title
   .title
     = event.title
 
-  span Description
+  h4 Description
   .description
     = event.description
 
-  span Photo
+  h4 Photo
   .photo
     = image_tag event.photo
+
+  h4 Tags
+  .tags
+    = raw event.clickable_tags
 
   - if policy(event).manage?
     .actions
